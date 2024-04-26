@@ -12,10 +12,10 @@ pipeline {
             sh 'zip -r $Sample.zip /var/lib/jenkins/workspace/simple-app-1'
           }
         }
-        stage('upload to s3') {
+        stage('codedeploy'){
           steps {
-            sh 'aws s3 cp $Sample.zip s3://sampleapp-1/'
-          }
+            step([$class: 'AWSCodeDeployPublisher', applicationName: 'sample-app', deploymentGroupAppspec: false, deploymentGroupName: 'sample-app', excludes: '', iamRoleArn: '', includes: 'simple-app-1', proxyHost: '', proxyPort: 0, region: 'us-east-1', s3bucket: 'sampleapp-1', s3prefix: '', subdirectory: '', versionFileName: '', waitForCompletion: false])
+           }
         }
     }
 }
