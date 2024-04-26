@@ -1,12 +1,19 @@
 version: 0.0
 os: linux
-
+files:
+  - source: /
+    destination: /var/www/html   # Update this destination path as per your application requirements
+permissions:
+  - object: /var/www/html
+    pattern: "**"
+    owner: ec2-user              # Update this owner as per your application requirements
+    group: apache                # Update this group as per your application requirements
 hooks:
-  ApplicationStop:
-    - location: scripts/stop_container.sh
+  BeforeInstall:
+    - location: scripts/before_install.sh
       timeout: 300
       runas: root
   AfterInstall:
-    - location: scripts/start_container.sh
+    - location: scripts/after_install.sh
       timeout: 300
       runas: root
