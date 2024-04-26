@@ -14,7 +14,7 @@ pipeline {
         }
         stage('codedeploy'){
           steps {
-            step([$class: 'AWSCodeDeployPublisher', applicationName: 'sample-app', deploymentGroupAppspec: false, deploymentGroupName: 'sample-app', excludes: '', iamRoleArn: '', includes: 'simple-app-1', proxyHost: '', proxyPort: 0, region: 'us-east-1', s3bucket: 'sampleapp-1', s3prefix: '', subdirectory: '', versionFileName: '', waitForCompletion: false])
+            step([$class: 'AWSCodeDeployPublisher', applicationName: 'sample-app-1', deploymentGroupAppspec: false, deploymentGroupName: 'sample-app-1', excludes: '', iamRoleArn: '', includes: 'simple-app-1', proxyHost: '', proxyPort: 0, region: 'us-east-1', s3bucket: 'sampleapp-1', s3prefix: '', subdirectory: '', versionFileName: '', waitForCompletion: false])
            }
         }
     }
